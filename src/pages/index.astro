@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import RevealObserver from '../components/RevealObserver.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+export const prerender = true;
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const [featured, ...rest] = posts;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="min-h-screen flex flex-col">
+		<Header />
+
+		<main class="flex-1 w-full">
+			<!-- Hero Section -->
+			<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 relative">
+				<!-- Dot pattern background -->
+				<div
+					class="absolute inset-0 opacity-[0.03]"
+					style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 24px 24px;"
+				></div>
+				<div class="flex flex-col items-center relative">
+					<a href="/" class="block" aria-label={SITE_TITLE}>
+						<svg class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<linearGradient id="hero-g" x1="0" y1="0" x2="1" y2="1">
+									<stop offset="0%" stop-color="var(--color-accent)"/>
+									<stop offset="100%" stop-color="var(--color-accent-secondary)"/>
+								</linearGradient>
+								<linearGradient id="hero-g2" x1="0" y1="0" x2="1" y2="1">
+									<stop offset="0%" stop-color="var(--color-accent-secondary)" stop-opacity="0.5"/>
+									<stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0"/>
+								</linearGradient>
+							</defs>
+							<rect width="100" height="100" rx="22" fill="url(#hero-g)"/>
+							<circle cx="75" cy="25" r="30" fill="url(#hero-g2)"/>
+							<path d="M32 28 L50 58 L68 28" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M50 58 L42 78" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+						</svg>
+					</a>
+					{SITE_DESCRIPTION && (
+						<p class="text-text-secondary max-w-2xl mx-auto mt-5 text-center">
+							{SITE_DESCRIPTION}
+						</p>
+					)}
+				</div>
+			</section>
+
+			<!-- Featured Post -->
+			{featured && (
+				<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+					<article class="featured-glow" data-reveal="scale">
+						<a
+							href={`/${featured.id}/`}
+							class="block glass-card rounded-2xl overflow-hidden hover:scale-[1.01] transition-all duration-300"
+						>
+							<div class="grid grid-cols-1 md:grid-cols-2">
+								{featured.data.heroImage && (
+									<div class="relative overflow-hidden aspect-video md:aspect-auto">
+										<Image
+											transition:name={`hero-${featured.id}`}
+											src={featured.data.heroImage}
+											alt=""
+											width={800}
+											height={500}
+											class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+										/>
+									</div>
+								)}
+								<div class="p-8 md:p-10 flex flex-col justify-center">
+									<span class="text-xs font-semibold uppercase tracking-wider text-accent mb-3">Featured</span>
+									<time class="text-sm text-text-tertiary mb-3 block">
+										<FormattedDate date={featured.data.pubDate} />
+									</time>
+									<h2
+										transition:name={`title-${featured.id}`}
+										class="text-2xl md:text-3xl font-bold text-text-primary hover:text-accent transition-colors mb-4 leading-tight"
+										style="font-family: var(--font-display); letter-spacing: -0.025em;"
+									>
+										{featured.data.title}
+									</h2>
+									{featured.data.description && (
+										<p class="text-text-secondary line-clamp-3 text-base">{featured.data.description}</p>
+									)}
+								</div>
+							</div>
+						</a>
+					</article>
+				</section>
+			)}
+
+			<!-- Blog Posts Grid -->
+			<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{
+						rest.map((post, i) => (
+							<article data-reveal data-reveal-delay={String((i % 3) + 1)}>
+								<a
+									href={`/${post.id}/`}
+									class="block glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 h-full flex flex-col"
+								>
+									{post.data.heroImage && (
+										<div class="relative overflow-hidden aspect-video">
+											<Image
+												transition:name={`hero-${post.id}`}
+												src={post.data.heroImage}
+												alt=""
+												width={600}
+												height={400}
+												class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+											/>
+										</div>
+									)}
+									<div class="p-6 flex-1 flex flex-col">
+										<time class="text-sm text-text-tertiary mb-3 block">
+											<FormattedDate date={post.data.pubDate} />
+										</time>
+										<h2
+											transition:name={`title-${post.id}`}
+											class="text-xl font-bold text-text-primary group-hover:text-accent transition-colors mb-3 line-clamp-2"
+										>
+											{post.data.title}
+										</h2>
+										{post.data.description && (
+											<p class="text-text-secondary line-clamp-3 flex-1">{post.data.description}</p>
+										)}
+									</div>
+								</a>
+							</article>
+						))
+					}
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+		<RevealObserver />
+	</body>
+</html>

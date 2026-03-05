@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+
+type Props = CollectionEntry<'blog'>['data'] & { id?: string };
+
+const { title, description, pubDate, updatedDate, heroImage, id } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image={heroImage} />
+	</head>
+
+	<body class="min-h-screen flex flex-col">
+		<ReadingProgress />
+		<Header />
+
+		<main class="flex-1 w-full">
+			<article>
+				<!-- Hero Image -->
+				{
+					heroImage && (
+						<div class="w-full max-h-[500px] relative overflow-hidden">
+							<Image
+								transition:name={id ? `hero-${id}` : undefined}
+								src={heroImage}
+								alt=""
+								width={1920}
+								height={1080}
+								class="w-full h-full object-cover"
+							/>
+							{/* Vignette + multi-layer gradient */}
+							<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg-primary" />
+							<div class="absolute inset-0 bg-radial-[ellipse_at_center] from-transparent to-black/20" />
+						</div>
+					)
+				}
+
+				<!-- Article Content -->
+				<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+					<div class="glass-card rounded-2xl p-8 md:p-12">
+						<!-- Article Header -->
+						<header class="mb-12">
+							<div class="flex items-center gap-3 text-sm text-text-tertiary mb-6">
+								<time>
+									<FormattedDate date={pubDate} />
+								</time>
+								{
+									updatedDate && (
+										<>
+											<span>•</span>
+											<time class="italic">
+												Updated <FormattedDate date={updatedDate} />
+											</time>
+										</>
+									)
+								}
+							</div>
+							<h1
+								transition:name={id ? `title-${id}` : undefined}
+								class="text-4xl md:text-5xl font-bold mb-6 text-text-primary leading-tight"
+								style="font-family: var(--font-display); letter-spacing: -0.025em;"
+							>
+								{title}
+							</h1>
+							{
+								description && (
+									<p class="text-lg md:text-xl text-text-secondary leading-relaxed">{description}</p>
+								)
+							}
+						</header>
+
+						<hr class="border-border/30 mb-8" />
+
+						<!-- Article Body -->
+						<div class="prose prose-lg max-w-none">
+							<slot />
+						</div>
+
+						<!-- Back to Blog -->
+						<div class="mt-16 pt-8 border-t border-border/30">
+							<a
+								href="/"
+								class="inline-flex items-center gap-2 text-accent hover:text-accent-hover transition-colors font-medium"
+							>
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+								</svg>
+								Back to Blog
+							</a>
+						</div>
+					</div>
+				</div>
+			</article>
+		</main>
+
+		<Footer />
+	</body>
+</html>

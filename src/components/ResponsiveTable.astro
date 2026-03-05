@@ -1,0 +1,52 @@
+---
+type Props = {
+  desktopColumns: ReadonlyArray<string>;
+  desktopRows: ReadonlyArray<ReadonlyArray<string>>;
+  mobileGroups: ReadonlyArray<{
+    heading: string;
+    rows: ReadonlyArray<ReadonlyArray<string>>;
+  }>;
+}
+
+const { desktopColumns, desktopRows, mobileGroups } = Astro.props;
+---
+
+<div class="@container">
+  <!-- Desktop Table View -->
+  <div class="hidden @sm:block">
+    <div class="overflow-x-auto glass-card rounded-xl p-4">
+      <table>
+        <thead>
+          <tr>
+            {desktopColumns.map(col => <th set:html={col} />)}
+          </tr>
+        </thead>
+        <tbody>
+          {desktopRows.map(row => (
+            <tr>
+              {row.map(cell => <td set:html={cell} />)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Mobile View -->
+  <div class="block @sm:hidden space-y-6">
+    {mobileGroups.map(group => (
+      <div class="glass-card rounded-xl p-4">
+        <h3 set:html={group.heading} class="mb-4" />
+        <table>
+          <tbody>
+            {group.rows.map(row => (
+              <tr>
+                {row.map(cell => <td set:html={cell} />)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ))}
+  </div>
+</div>

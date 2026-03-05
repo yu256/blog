@@ -1,0 +1,25 @@
+---
+// Reading progress bar for article pages
+---
+
+<div class="reading-progress" id="reading-progress" style="width: 0%"></div>
+
+<script>
+	function initReadingProgress() {
+		const bar = document.getElementById('reading-progress');
+		if (!bar) return;
+
+		function updateProgress() {
+			const scrollTop = window.scrollY;
+			const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+			if (docHeight <= 0) return;
+			const progress = Math.min((scrollTop / docHeight) * 100, 100);
+			bar.style.width = `${progress}%`;
+		}
+
+		window.addEventListener('scroll', updateProgress, { passive: true });
+		updateProgress();
+	}
+
+	document.addEventListener('astro:page-load', initReadingProgress);
+</script>

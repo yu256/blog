@@ -1,0 +1,29 @@
+{
+  "name": "yu-blog",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "fmt": "oxfmt",
+    "lint": "oxlint --type-aware"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/noto-sans-jp": "^5.2.10",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "oxfmt": "^0.28.0",
+    "oxlint-tsgolint": "^0.11.4",
+    "wrangler": "^4.62.0"
+  }
+}

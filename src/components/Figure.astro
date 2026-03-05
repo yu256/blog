@@ -1,0 +1,22 @@
+---
+type Props = {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+const { src, alt, caption } = Astro.props;
+const modalId = crypto.randomUUID();
+---
+
+<div class="flex flex-col gap-1">
+  <button popovertarget={modalId} class="appearance-none cursor-zoom-in bg-transparent border-0 p-0 w-full text-left">
+    <img src={src} alt={alt} class="w-full h-auto rounded-lg" />
+  </button>
+  {caption && <p class="text-sm text-text-tertiary text-center">{caption}</p>}
+</div>
+
+<div id={modalId} popover class="image-modal">
+  <img src={src} alt={alt} />
+  <button popovertarget={modalId} class="image-modal-close" aria-label="Close">&times;</button>
+</div>

@@ -1,0 +1,362 @@
+---
+title: "Open Source Summit Japan 2025 参加レポート: 技術の潮流とコミュニティの熱気"
+description: "虎ノ門で開催されたOSS Summit Japan 2025の参加録。様々なセッションや展示ブースでの交流を通じて感じたOSSの現在地、そしてエンジニアとしての新たな刺激と課題についてまとめました。"
+pubDate: 2026-2-4
+heroImage: "../../assets/OSS-Japan-25.avif"
+---
+
+import ResponsiveTable from "../../components/ResponsiveTable.astro";
+import Grid from "../../components/Grid.astro";
+import Figure from "../../components/Figure.astro";
+import img1076 from "../../assets/IMG_1076.webp";
+import img1077 from "../../assets/IMG_1077.webp";
+import img1084 from "../../assets/IMG_1084.webp";
+import img1139 from "../../assets/IMG_1139.webp";
+import img1140 from "../../assets/IMG_1140.webp";
+import img1188 from "../../assets/IMG_1188.webp";
+import img1197 from "../../assets/IMG_1197.webp";
+import img1199 from "../../assets/IMG_1199.webp";
+
+12月8日〜10日に虎ノ門ヒルズフォーラムで開催された **Open Source Summit Japan 2025**（OSSJ 2025）に参加してきました！
+
+<div class="grid gap-4 my-4">
+  <div class="grid grid-cols-2 gap-4">
+    <Figure src={img1076.src} alt="Open Source Summit Japan 2025 会場の様子" />
+    <Figure
+      src={img1077.src}
+      alt="Open Source Summit Japan 2025 会場の様子"
+      caption="5Fと6Fが会場でした"
+    />
+  </div>
+  <Figure src={img1084.src} alt="Open Source Summit Japan 2025 会場の様子" />
+</div>
+
+Linux Foundation主催でチケットも高額だっただけあって、会場の熱気はすごかったです。
+
+## 参加したセッション
+
+セッション内容はもちろんですが、ここに来るような方々の話そのものにも興味があったので特定領域に絞らず幅広く聞くようにしていました。
+
+事前に見たいセッションをある程度リストアップしてはいたのですが、いざ会場に入ると面白そうなものが多く、結局はその場のノリで選んだものも多かったです。
+
+k8sと自動車関連は前提知識が足りなくて避けがちになってしまいました。面白そうな話も多かったので、もっとキャッチアップしておけばと後悔しています......。結果的に、個人的に興味のある低レイヤ分野が多くなりました。
+
+<ResponsiveTable
+  desktopColumns={["時間", "12/8（月）", "12/9（火）", "12/10（水）"]}
+  desktopRows={[
+    [
+      "09:00–09:10",
+      '<a href="https://ossjapan2025.sched.com/event/6074fbd4b76a745a29e6ae9b19006223">Keynote: Welcome & Opening Remarks</a>',
+      '<a href="https://ossjapan2025.sched.com/event/faed4ff1cbd9e3ef65cfeab3aa05e1d4">Keynote: Welcome Back</a>',
+      '<a href="https://ossjapan2025.sched.com/event/429ec698863fbba5fee053a99e231c4b">Keynote: Welcome Back</a>',
+    ],
+    [
+      "09:10–09:40",
+      '<a href="https://ossjapan2025.sched.com/event/4812006e52847ab03ae4a01cf4210989">Keynote: State of the Union</a>',
+      "—",
+      '<a href="https://ossjapan2025.sched.com/event/fbeb2a5ee2c83a8dd79c481c8aa20810">Keynote: Space Grade Linux: Building a Safer, Open Source Future for Space Systems</a>',
+    ],
+    [
+      "09:40–09:50",
+      '<a href="https://ossjapan2025.sched.com/event/cecfd43208d4743f0fbcbf1758f00d9b">Keynote: What\'s Next for Agones? Planet-scale Governance</a>',
+      '<a href="https://ossjapan2025.sched.com/event/4dadc4161ea372144485d3ea808a5447">Keynote: OpenSearch: From Code to Community</a>',
+      '<a href="https://ossjapan2025.sched.com/event/b2b774cbbbc12047e428fdf731de983e">Keynote: The Value of Open Source in Japan, APEC, and Around the World: Insights from LF Research</a>',
+    ],
+    [
+      "09:55–10:10",
+      '<a href="https://ossjapan2025.sched.com/event/2f59c33bc5a4fc89b5f44a2b85f217c2">Keynote: AGL SoDeV: Leading the Software Defined Vehicles Revolution</a>',
+      '<a href="https://ossjapan2025.sched.com/event/9bed998dd2f6de009a444f9797b4c9f7">Keynote: Linus Torvalds, Creator of Linux & Git, in Conversation with Dirk Hohndel, Head of the Open Source Program Office, Verizon</a>',
+      '<a href="https://ossjapan2025.sched.com/event/bbae2c0c5cf822ef739d8c1cf3cdd5ba">Keynote: LF Energy: An Innovative Ecosystem Powering the Future of Energy Through Open Source</a>',
+    ],
+    [
+      "10:10–10:20",
+      '<a href="https://ossjapan2025.sched.com/event/6d1433ff818ec17140f5e51ccca7483b">Keynote: Accelerating SDV Through Open-Source Based Virtualization</a>',
+      "—",
+      "—",
+    ],
+    [
+      "10:25–10:40",
+      '<a href="https://ossjapan2025.sched.com/event/894d5794df82da543a31fcab2b163d6b">Keynote: What is Learning in the AI Era?</a>',
+      "—",
+      "—",
+    ],
+    [
+      "10:50–11:30",
+      "—",
+      "—",
+      '<a href="https://ossjapan2025.sched.com/event/d35ea59bb37a2bee54dad971606e1f82">Docs Tools for OSS Maintainers</a>',
+    ],
+    [
+      "11:40–12:20",
+      "—",
+      "—",
+      '<a href="https://ossjapan2025.sched.com/event/b5707c12ee158eb48e6761845b0ec588">We Need an Open-source Phone OS - PostmarketOS!</a>',
+    ],
+    [
+      "12:00–12:10",
+      "—",
+      '<a href="https://ossjapan2025.sched.com/event/62919c3f8c097e4a72f5ed6f32338236">Lightning Talk: Raising Young Coders</a>',
+      "—",
+    ],
+    [
+      "12:05–12:45",
+      '<a href="https://ossjapan2025.sched.com/event/3a4ead4e2710e8984909d6a707983328">Applying Zephyr RTOS in Spacecraft Development</a>',
+      "—",
+      "—",
+    ],
+    [
+      "14:00–14:40",
+      '<a href="https://ossjapan2025.sched.com/event/c4fcb24b87a2014ad2b9b6f420c7219c">From 0 To 500+ Models: Building a Robust Open Source AI Compiler With MLIR</a>',
+      '<a href="https://ossjapan2025.sched.com/event/5be8ae62064099459d7edc0fce41e881">Linux User Namespaces: A Blessing and a Curse</a>',
+      "—",
+    ],
+    [
+      "14:50–15:30",
+      '<a href="https://ossjapan2025.sched.com/event/a852a30314c8b94d9f4a14dd1b92b563">OFP: Agentic AI Standard for Hallucination Mitigation and Multi-Agent Collaboration</a>',
+      '<a href="https://ossjapan2025.sched.com/event/10c6d1b873ea067b5681d89a8ceb138d">Implementing Case-insensitive File Systems in the Linux Kernel</a>',
+      '<a href="https://ossjapan2025.sched.com/event/0faa725d6768c0455f2df38f4da90c27">PETs - A Technical Solution To Digital Sovereignty?</a>',
+    ],
+    [
+      "15:40–16:20",
+      '<a href="https://ossjapan2025.sched.com/event/11c10f88694e8708a14a103d1a56de69">Stop Allocating GPUs, Start Delivering Intelligence: An Enterprise Blueprint for AI ROI on Kubernetes</a>',
+      "—",
+      "—",
+    ],
+    [
+      "15:50–16:30",
+      "—",
+      '<a href="https://ossjapan2025.sched.com/event/a09012a69df345e6d3e39a128c8eedea">How Can Your Organization Maximize Open Source Business Value?</a>',
+      '<a href="https://ossjapan2025.sched.com/event/3bac424450e73d6c313e950fe76e966d">Nurturing the Next Generation of Open Source Contributors</a>',
+    ],
+    [
+      "16:40–17:20",
+      '<a href="https://ossjapan2025.sched.com/event/334bdf9033adc3e8b6e520ef7c0a78a5">Secure Authorization for Agentic AI in Multi-Domain Environments</a>',
+      '<a href="https://ossjapan2025.sched.com/event/a06a6f6533942734705b7578a48545a8">Kernel Development BoF: So I\'ve Learned C... Now What? - A Community Discussion</a>',
+      '<a href="https://ossjapan2025.sched.com/event/e95b0e15be97ff63e579bd47c3ed64f1">Developing Innovation-Ready Engineers Through Open Source Contribution</a>',
+    ],
+    [
+      "17:30–18:10",
+      '<a href="https://ossjapan2025.sched.com/event/2dbe801fc96112642a20940c99d760ff">Panel: Mentoring the Next Generation of Global Contributors: Strategies, Challenges, and Opportunities</a>',
+      "—",
+      "—",
+    ],
+    [
+      "18:30–20:30",
+      '<a href="https://ossjapan2025.sched.com/event/8a9170adc2f323b1bbd62526cae1c999">Rust Global: Tokyo</a>',
+      "—",
+      "—",
+    ],
+  ]}
+  mobileGroups={[
+    {
+      heading: "12/8（月）",
+      rows: [
+        [
+          "09:00–09:10",
+          '<a href="https://ossjapan2025.sched.com/event/6074fbd4b76a745a29e6ae9b19006223">Keynote: Welcome & Opening Remarks</a>',
+        ],
+        [
+          "09:10–09:40",
+          '<a href="https://ossjapan2025.sched.com/event/4812006e52847ab03ae4a01cf4210989">Keynote: State of the Union</a>',
+        ],
+        [
+          "09:40–09:50",
+          '<a href="https://ossjapan2025.sched.com/event/cecfd43208d4743f0fbcbf1758f00d9b">Keynote: What\'s Next for Agones? Planet-scale Governance</a>',
+        ],
+        [
+          "09:55–10:10",
+          '<a href="https://ossjapan2025.sched.com/event/2f59c33bc5a4fc89b5f44a2b85f217c2">Keynote: AGL SoDeV: Leading the Software Defined Vehicles Revolution</a>',
+        ],
+        [
+          "10:10–10:20",
+          '<a href="https://ossjapan2025.sched.com/event/6d1433ff818ec17140f5e51ccca7483b">Keynote: Accelerating SDV Through Open-Source Based Virtualization</a>',
+        ],
+        [
+          "10:25–10:40",
+          '<a href="https://ossjapan2025.sched.com/event/894d5794df82da543a31fcab2b163d6b">Keynote: What is Learning in the AI Era?</a>',
+        ],
+        [
+          "12:05–12:45",
+          '<a href="https://ossjapan2025.sched.com/event/3a4ead4e2710e8984909d6a707983328">Applying Zephyr RTOS in Spacecraft Development</a>',
+        ],
+        [
+          "14:00–14:40",
+          '<a href="https://ossjapan2025.sched.com/event/c4fcb24b87a2014ad2b9b6f420c7219c">From 0 To 500+ Models: Building a Robust Open Source AI Compiler With MLIR</a>',
+        ],
+        [
+          "14:50–15:30",
+          '<a href="https://ossjapan2025.sched.com/event/a852a30314c8b94d9f4a14dd1b92b563">OFP: Agentic AI Standard for Hallucination Mitigation and Multi-Agent Collaboration</a>',
+        ],
+        [
+          "15:40–16:20",
+          '<a href="https://ossjapan2025.sched.com/event/11c10f88694e8708a14a103d1a56de69">Stop Allocating GPUs, Start Delivering Intelligence: An Enterprise Blueprint for AI ROI on Kubernetes</a>',
+        ],
+        [
+          "16:40–17:20",
+          '<a href="https://ossjapan2025.sched.com/event/334bdf9033adc3e8b6e520ef7c0a78a5">Secure Authorization for Agentic AI in Multi-Domain Environments</a>',
+        ],
+        [
+          "17:30–18:10",
+          '<a href="https://ossjapan2025.sched.com/event/2dbe801fc96112642a20940c99d760ff">Panel: Mentoring the Next Generation of Global Contributors: Strategies, Challenges, and Opportunities</a>',
+        ],
+        [
+          "18:30–20:30",
+          '<a href="https://ossjapan2025.sched.com/event/8a9170adc2f323b1bbd62526cae1c999">Rust Global: Tokyo</a>',
+        ],
+      ],
+    },
+    {
+      heading: "12/9（火）",
+      rows: [
+        [
+          "09:00–09:10",
+          '<a href="https://ossjapan2025.sched.com/event/faed4ff1cbd9e3ef65cfeab3aa05e1d4">Keynote: Welcome Back</a>',
+        ],
+        [
+          "09:40–09:50",
+          '<a href="https://ossjapan2025.sched.com/event/4dadc4161ea372144485d3ea808a5447">Keynote: OpenSearch: From Code to Community</a>',
+        ],
+        [
+          "09:55–10:10",
+          '<a href="https://ossjapan2025.sched.com/event/9bed998dd2f6de009a444f9797b4c9f7">Keynote: Linus Torvalds, Creator of Linux & Git, in Conversation with Dirk Hohndel, Head of the Open Source Program Office, Verizon</a>',
+        ],
+        [
+          "12:00–12:10",
+          '<a href="https://ossjapan2025.sched.com/event/62919c3f8c097e4a72f5ed6f32338236">Lightning Talk: Raising Young Coders</a>',
+        ],
+        [
+          "14:00–14:40",
+          '<a href="https://ossjapan2025.sched.com/event/5be8ae62064099459d7edc0fce41e881">Linux User Namespaces: A Blessing and a Curse</a>',
+        ],
+        [
+          "14:50–15:30",
+          '<a href="https://ossjapan2025.sched.com/event/10c6d1b873ea067b5681d89a8ceb138d">Implementing Case-insensitive File Systems in the Linux Kernel</a>',
+        ],
+        [
+          "15:50–16:30",
+          '<a href="https://ossjapan2025.sched.com/event/a09012a69df345e6d3e39a128c8eedea">How Can Your Organization Maximize Open Source Business Value?</a>',
+        ],
+        [
+          "16:40–17:20",
+          '<a href="https://ossjapan2025.sched.com/event/a06a6f6533942734705b7578a48545a8">Kernel Development BoF: So I\'ve Learned C... Now What? - A Community Discussion</a>',
+        ],
+      ],
+    },
+    {
+      heading: "12/10（水）",
+      rows: [
+        [
+          "09:00–09:10",
+          '<a href="https://ossjapan2025.sched.com/event/429ec698863fbba5fee053a99e231c4b">Keynote: Welcome Back</a>',
+        ],
+        [
+          "09:10–09:40",
+          '<a href="https://ossjapan2025.sched.com/event/fbeb2a5ee2c83a8dd79c481c8aa20810">Keynote: Space Grade Linux: Building a Safer, Open Source Future for Space Systems</a>',
+        ],
+        [
+          "09:40–09:50",
+          '<a href="https://ossjapan2025.sched.com/event/b2b774cbbbc12047e428fdf731de983e">Keynote: The Value of Open Source in Japan, APEC, and Around the World: Insights from LF Research</a>',
+        ],
+        [
+          "09:55–10:10",
+          '<a href="https://ossjapan2025.sched.com/event/bbae2c0c5cf822ef739d8c1cf3cdd5ba">Keynote: LF Energy: An Innovative Ecosystem Powering the Future of Energy Through Open Source</a>',
+        ],
+        [
+          "10:50–11:30",
+          '<a href="https://ossjapan2025.sched.com/event/d35ea59bb37a2bee54dad971606e1f82">Docs Tools for OSS Maintainers</a>',
+        ],
+        [
+          "11:40–12:20",
+          '<a href="https://ossjapan2025.sched.com/event/b5707c12ee158eb48e6761845b0ec588">We Need an Open-source Phone OS - PostmarketOS!</a>',
+        ],
+        [
+          "14:50–15:30",
+          '<a href="https://ossjapan2025.sched.com/event/0faa725d6768c0455f2df38f4da90c27">PETs - A Technical Solution To Digital Sovereignty?</a>',
+        ],
+        [
+          "15:50–16:30",
+          '<a href="https://ossjapan2025.sched.com/event/3bac424450e73d6c313e950fe76e966d">Nurturing the Next Generation of Open Source Contributors</a>',
+        ],
+        [
+          "16:40–17:20",
+          '<a href="https://ossjapan2025.sched.com/event/e95b0e15be97ff63e579bd47c3ed64f1">Developing Innovation-Ready Engineers Through Open Source Contribution</a>',
+        ],
+      ],
+    },
+  ]}
+/>
+
+### [Keynote: AGL SoDeV: Leading the Software Defined Vehicles Revolution](https://ossjapan2025.sched.com/event/2f59c33bc5a4fc89b5f44a2b85f217c2)
+
+パーソナルコンピュータやスマホの歴史と同じように、ハードウェアファーストではなくソフトウェアファーストになるという話でした。
+
+「車のハードウェアには制約が多いから、ハードウェア主体になるのも仕方ない」と、これまではなんとなく納得していたんですが、ソフトウェアでそれを吸収して進化していくという話は興味深かったです。
+
+### [From 0 To 500+ Models: Building a Robust Open Source AI Compiler With MLIR](https://ossjapan2025.sched.com/event/c4fcb24b87a2014ad2b9b6f420c7219c)
+
+コンパイラや最適化の話が好きで聴講しました。
+普段はLLVMなどをイメージして「コンパイラ=最終的に機械語へ翻訳するもの」と考えがちなのですが、このセッションではその固定観念が良い意味で裏切られました。
+
+ハードウェアの命令に落とし込むずっと手前の段階で、MLIRを使って「抽象的な計算グラフ」を徹底的に最適化するアプローチが解説されていました。
+機械語を生成しないコンパイラ（AltJSなど）は知っていましたが、AIコンパイラの世界でも同様に、「機械語」という現実の制約に縛られる前の「抽象的な場所」にこそ、共通言語による最適化の余地が大きく残されているんだなと感心しました。
+
+### [Rust Global: Tokyo](https://ossjapan2025.sched.com/event/8a9170adc2f323b1bbd62526cae1c999)
+
+セッションの内容は低レイヤ中心でした。技術的な話ももちろん面白かったんですが、コミュニティの雰囲気が温かくて印象的でした。
+
+<Grid>
+  <Figure src={img1197.src} alt="プレゼンの様子" caption="ジョーク満載のプレゼン" />
+  <Figure src={img1188.src} alt="QRコードでのリンク提示" caption="「もちろん、リンクだ」" />
+</Grid>
+
+「ここにリンクがあります」「次のスライドはなんだと思う？もちろん、リンクだ」といったやり取りや、Armの方によるMali（GPU）とマリ共和国の地図をかけたジョーク（「あ、これは違うMaliだ」）など、終始笑いの絶えないセッションでした。
+
+その後の懇親会では、日本人のRustaceanの方々と交流できました。Rustを趣味や業務で使っている、似たようなポジションの方々と話ができたのは貴重な経験でした。
+
+<div class="max-w-xs mx-auto my-4">
+  <Figure
+    src={img1199.src}
+    alt="Rustのマスコットキャラクター Ferris"
+    caption="ノベルティのFerris。かわいい。"
+  />
+</div>
+
+ノベルティとしてRustのステッカーとマスコット🦀のグッズをもらいました。
+
+### その他の注目セッション
+
+今回はDay 1の内容を中心にまとめましたが、Day 2以降も面白いセッションが目白押しでした。どれも非常に勉強になるものばかりでしたが、特に以下のタイトルは、自分の趣味嗜好による補正もあってか、個人的に強く印象に残っています。
+
+- [Keynote: Linus Torvalds, Creator of Linux & Git, in Conversation with Dirk Hohndel, Head of the Open Source Program Office, Verizon](https://ossjapan2025.sched.com/event/9bed998dd2f6de009a444f9797b4c9f7)
+- [Linux User Namespaces: A Blessing and a Curse](https://ossjapan2025.sched.com/event/5be8ae62064099459d7edc0fce41e881)
+- [Implementing Case-insensitive File Systems in the Linux Kernel](https://ossjapan2025.sched.com/event/10c6d1b873ea067b5681d89a8ceb138d)
+- [How Can Your Organization Maximize Open Source Business Value?](https://ossjapan2025.sched.com/event/a09012a69df345e6d3e39a128c8eedea)
+- [Docs Tools for OSS Maintainers](https://ossjapan2025.sched.com/event/d35ea59bb37a2bee54dad971606e1f82)
+- [We Need an Open-source Phone OS - PostmarketOS!](https://ossjapan2025.sched.com/event/b5707c12ee158eb48e6761845b0ec588)
+- [PETs - A Technical Solution To Digital Sovereignty?](https://ossjapan2025.sched.com/event/0faa725d6768c0455f2df38f4da90c27)
+- [Nurturing the Next Generation of Open Source Contributors](https://ossjapan2025.sched.com/event/3bac424450e73d6c313e950fe76e966d)
+
+## 言語と翻訳ツールについて
+
+セッションは英語ベースで進行しました。リアルタイム翻訳のWordlyが結構健闘してくれていたのですが、専門用語に関しては少し精度が落ちる印象でしたね。比較のためにAirPodsの翻訳機能も試しましたが、Wordlyよりも用語の認識が弱く、正直今ひとつでした。最終的には、英語のリスニングをメインにしつつ、Wordlyで答え合わせをするようにしました。
+
+## 展示とコミュニケーション
+
+展示ブースエリアも非常に活気があり、多くの企業が出展していました。
+
+<Grid>
+  <Figure src={img1139.src} alt="Hondaブース" caption="Hondaブース" />
+  <Figure src={img1140.src} alt="Red HatブースのSteam Deck" caption="Red Hatブース" />
+</Grid>
+
+Red Hatのブースでは "Welcome to a Steam Deck powered by RHEL 10.1!" という展示があり、Steam DeckでRHELが動いていました。「なぜSteam Deck？」と驚きましたが、あえてこれをデモ機に選ぶというやり方の尖り具合が面白かったです。
+
+ブース担当のエンジニアの方々とは、展示内容の話にとどまらず、技術全般の動向や普段の開発における課題など、一般的なトピックについても直接会話することができ、非常に刺激を受けました。
+
+一方で、会場には海外の出展者も多かったのですが、そちらに対しては英語力の不安から十分に話しかけられず、もどかしい思いをしました。技術以前に、共通言語で対等にコミュニケーションを取れることの重要性を改めて痛感し、大きな機会損失だったと反省しています。
+
+## まとめ
+
+今回はセッションのボリュームが満点だったので、Day 1の内容に絞ってレポートしました。
+
+技術的なトレンドを追えただけでなく、自分の知識不足に気づかされる場面も多かったです。特に避けてしまった領域への未練もあり、結果として当初よりも関心の幅が大きく広がったように感じます。英語を含めた自身の課題がはっきり見えたことも含め、今の自分に必要な刺激をたくさんもらえた、非常に有意義なイベントでした。
